@@ -1,6 +1,18 @@
 <launch>
   <node pkg="nodelet" type="nodelet" name="base_nodelet_manager" args="manager"  output="screen"/>
-  <node pkg="nodelet" type="nodelet" name="load_test_diff_time"
-    args="load test_nodelets/DiffTimeNodelet base_nodelet_manager">
-  </node>
+
+    <node pkg="nodelet" type="nodelet" name="test_diff_time_1"
+        args="load test_nodelets/DiffTimeNodelet base_nodelet_manager">
+        <remap from="test_diff_time_1/internal_sub" to="internal_channel_1" />
+        <remap from="test_diff_time_1/internal_pub" to="internal_channel_2" />
+        <remap from="test_diff_time_1/extern_sub" to="in1" />
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="test_diff_time_2"
+        args="load test_nodelets/DiffTimeNodelet base_nodelet_manager">
+        <remap from="test_diff_time_2/internal_sub" to="internal_channel_2" />
+        <remap from="test_diff_time_2/internal_pub" to="internal_channel_1" />
+        <remap from="test_diff_time_2/extern_sub" to="in2" />
+    </node>
+
 </launch>
