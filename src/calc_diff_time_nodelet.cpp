@@ -11,8 +11,12 @@ namespace  calculators{
 
     virtual void onInit()
     {
-      NODELET_INFO("Called init of nodelet");
-      diff_time_.reset(new DiffTimeClass());
+      ros::NodeHandle nh = this->getPrivateNodeHandle();
+      std::string name = nh.getUnresolvedNamespace();
+      name = name.substr(name.find_last_of('/') + 1);
+
+      NODELET_INFO_STREAM("Initialising nodelet... [" << name << "]");
+      diff_time_.reset(new DiffTimeClass(nh, name));
       diff_time_->init();
     }
   private:
