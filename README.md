@@ -11,8 +11,8 @@ Startup: `roslaunch test_nodelets test_diff_time.launch`
     * Creates two nodelets of same type
     * User pubs int value to /in topic of one nodelet
     * This value is then published internally via zero copy memory transfer to the other nodelet which then prints it out
-
-
+* Has thread manipulation example
+    * Publishing 0 to external subscriber (/inx) will stop the thread that saves time, and publishing 1 starts it again
 
 ## Resources
 

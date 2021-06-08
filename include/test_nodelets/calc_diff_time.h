@@ -44,6 +44,14 @@ namespace calculators {
       ROS_INFO_STREAM(name_ << " got external value " << msg->data );
       intern_msg_->data = msg->data;
       internal_pub_.publish(intern_msg_);
+      if(msg->data == 0 && timer_.hasStarted()) {
+        ROS_INFO_STREAM("Stopping internal saving timer");
+        timer_.stop();
+      }
+      if(msg->data == 1 && !timer_.hasStarted()) {
+        ROS_INFO_STREAM("Starting internal saving timer");
+        timer_.start();
+      }
     }
 
     void internalSubCb(const std_msgs::Int32::ConstPtr& msg) {
