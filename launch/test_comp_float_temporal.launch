@@ -1,0 +1,10 @@
+<launch>
+    <node pkg="nodelet" type="nodelet" name="base_nodelet_manager" args="manager"  output="screen">
+        <param name="num_worker_threads" value="32" />
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="comp_float_temporal"
+        args="load test_nodelets/CompFloatTemporalNodelet base_nodelet_manager">
+    </node>
+
+</launch>
