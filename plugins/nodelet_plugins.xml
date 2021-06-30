@@ -1,7 +1,13 @@
-<library path="lib/libdiff_time_nodelet">
+<library path="lib/libtest_nodelets">
   <class name="test_nodelets/DiffTimeNodelet" type="calculators::DiffTimeNodelet" base_class_type="nodelet::Nodelet">
     <description>
       Nodelet for a simple blink when bump controller
+    </description>
+  </class>
+
+  <class name="test_nodelets/CompParamNodelet" type="calculators::CompParamNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet for comparing against param
     </description>
   </class>
 </library>

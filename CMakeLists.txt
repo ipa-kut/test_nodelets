@@ -4,7 +4,7 @@ project(test_nodelets)
 find_package(catkin REQUIRED COMPONENTS nodelet roscpp std_msgs)
 
 catkin_package(
- LIBRARIES diff_time_nodelet
+ LIBRARIES test_nodelets
  INCLUDE_DIRS include
  CATKIN_DEPENDS nodelet roscpp std_msgs
 )
@@ -14,6 +14,9 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_library(diff_time_nodelet src/calc_diff_time_nodelet.cpp)
-add_dependencies(diff_time_nodelet ${catkin_EXPORTED_TARGETS})
-target_link_libraries(diff_time_nodelet ${catkin_LIBRARIES})
+add_library(test_nodelets
+    src/calc_diff_time_nodelet.cpp
+    src/calc_comp_param_nodelet.cpp)
+add_dependencies(test_nodelets ${catkin_EXPORTED_TARGETS})
+target_link_libraries(test_nodelets ${catkin_LIBRARIES})
+

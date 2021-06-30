@@ -3,6 +3,8 @@ Just playing around with nodelets
 
 ## test_nodelets/DiffTimeNodelet
 
+> WARNING: DOES NOT ACTUALLY DO DIFF TIME, ENDED UP BECOMING A NODELET EXPERIMENTATION TARGET
+
 Startup: `roslaunch test_nodelets test_diff_time.launch`
 
 * Has multithreading example
@@ -13,6 +15,21 @@ Startup: `roslaunch test_nodelets test_diff_time.launch`
     * This value is then published internally via zero copy memory transfer to the other nodelet which then prints it out
 * Has thread manipulation example
     * Publishing 0 to external subscriber (/inx) will stop the thread that saves time, and publishing 1 starts it again
+
+## test_nodelets/CompParamNodelet
+
+Compares an incoming float value against a parameter float value, and reports true when nearly equal based on threshold
+
+Startup: `roslaunch test_nodelets test_comp_param.launch`
+
+* Has two params:
+    * `param` - Float - Value to compare against
+    * `tolerance` - Float - Threshold of true comparison window
+* Has two inputs:
+    * `control` - Bool - When true, calculation is enabled
+    * `float_val` - Float - Value to compare against param
+* Has one output:
+    * `result` - Bool - True when calculation result is true
 
 ## Resources
 
