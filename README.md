@@ -31,6 +31,25 @@ Startup: `roslaunch test_nodelets test_comp_param.launch`
 * Has one output:
     * `result` - Bool - True when calculation result is true
 
+## test_nodelets/CompFloatTemporalNodelet
+
+Computes difference in a float input values between start and stop signal.    
+Good demo for having start/stop/reset structure with nodelets.   
+**NB**: This version of calculator does not need a level-maintained signal, but also works with pulse events.   
+**NB2**: Name says comparator, but this is actually a differentiator. Too lazy to change.  
+
+Startup: `roslaunch test_nodelets test_comp_float_temporal.launch`
+
+* Has three control inputs:
+    * `start` - Bool - Start calculator. Infinite waiting loop for this signal after startup/reset. 
+    * `stop` - Bool - Stop a running calculator. Infinite waiting loop for this signal after start.
+    * `reset` - Bool(Edge triggered) - Resets a stopped calculator in FALLING EDGE. Infinite waiting loop for this signal after stop.
+* Has one data input:
+    * `float_val` - Float64 - The float val on this topic is used to calculate the difference
+* Has one data output:
+    * `result` - Float64 - The result of calculation is published ONCE.
+
+
 ## Resources
 
 * [ROS Nodelet wiki](http://wiki.ros.org/nodelet) -> Just an overview

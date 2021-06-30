@@ -10,5 +10,12 @@
       Nodelet for comparing against param
     </description>
   </class>
+
+  <class name="test_nodelets/CompFloatTemporalNodelet" type="calculators::CompFloatTemporalNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet for comparing float temporaly
+    </description>
+  </class>
+
 </library>
 
