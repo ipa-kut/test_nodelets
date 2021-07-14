@@ -1,6 +1,6 @@
 <launch>
     <rosparam command="load" file="$(find test_nodelets)/config/test_comp_param.yaml" />
-    <node pkg="nodelet" type="nodelet" name="base_nodelet_manager" args="manager"  output="screen"/>
+    <!--node pkg="nodelet" type="nodelet" name="base_nodelet_manager" args="manager"  output="screen"/-->
 
     <node pkg="nodelet" type="nodelet" name="comp_param"
         args="load test_nodelets/CompParamNodelet base_nodelet_manager">

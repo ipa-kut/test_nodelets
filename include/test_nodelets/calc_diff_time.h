@@ -5,6 +5,9 @@
 #include <std_msgs/Int32.h>
 #include <boost/thread.hpp>
 
+#include <ambs_base_calculator/ambs_base_calculator.hpp>
+#include <ambs_base_interface/ambs_base_interface.hpp>
+
 namespace calculators {
 
   class DiffTimeClass {
@@ -17,13 +20,14 @@ namespace calculators {
 
     void init()
     {
-      ROS_INFO("Called init of class");
+      ROS_INFO_STREAM(name_ <<  " : Started init");
       timer_ = nh_.createTimer(ros::Duration(5.0), boost::bind(& DiffTimeClass::timerCb, this, _1));
       reader_ = nh_.createTimer(ros::Duration(5.0), boost::bind(& DiffTimeClass::readerCb, this, _1));
       extern_sub_ = nh_.subscribe("extern_sub", 10, &DiffTimeClass::externSubCb, this);
       internal_sub_ = nh_.subscribe("internal_sub", 10, &DiffTimeClass::internalSubCb, this);
       internal_pub_ = nh_.advertise<std_msgs::Int32>("internal_pub", 10);
       intern_msg_.reset(new std_msgs::Int32());
+      ROS_INFO_STREAM(name_ <<  " : Finished init");
     }
 
     void timerCb(const ros::TimerEvent& event) {

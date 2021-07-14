@@ -1,5 +1,5 @@
 <launch>
-  <node pkg="nodelet" type="nodelet" name="base_nodelet_manager" args="manager"  output="screen"/>
+  <!--node pkg="nodelet" type="nodelet" name="base_nodelet_manager" args="manager"  output="screen"/-->
 
     <node pkg="nodelet" type="nodelet" name="test_diff_time_1"
         args="load test_nodelets/DiffTimeNodelet base_nodelet_manager">

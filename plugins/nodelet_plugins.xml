@@ -17,5 +17,11 @@
     </description>
   </class>
 
+<class name="test_nodelets/CompIntTemporalNodelet" type="calculators::CompIntTemporalNodelet" base_class_type="nodelet::Nodelet">
+  <description>
+    Nodelet for comparing ints temporaly
+  </description>
+</class>
+
 </library>
 

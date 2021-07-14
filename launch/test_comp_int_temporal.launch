@@ -1,0 +1,30 @@
+<launch>
+    <node pkg="nodelet" type="nodelet" name="base_nodelet_manager" args="manager"  output="screen">
+        <param name="num_worker_threads" value="32" />
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="comp_int_temporal"
+        args="load test_nodelets/CompIntTemporalNodelet base_nodelet_manager">
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="comp_int_temporal_2"
+        args="load test_nodelets/CompIntTemporalNodelet base_nodelet_manager">
+        <remap from="/out_int" to="out_int_2" />
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="comp_int_temporal_3"
+        args="load test_nodelets/CompIntTemporalNodelet base_nodelet_manager">
+        <remap from="/out_int" to="out_int_3" />
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="comp_int_temporal_4"
+        args="load test_nodelets/CompIntTemporalNodelet base_nodelet_manager">
+        <remap from="/out_int" to="out_int_4" />
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="comp_int_temporal_5"
+        args="load test_nodelets/CompIntTemporalNodelet base_nodelet_manager">
+        <remap from="/out_int" to="out_int_5" />
+    </node>
+
+</launch>

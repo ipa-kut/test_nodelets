@@ -8,16 +8,20 @@
 #include <boost/thread.hpp>
 #include <cmath>
 
+#include <ambs_base_calculator/ambs_base_calculator.hpp>
+
 namespace calculators {
 
-class CompFloatTemporalClass{
+class CompFloatTemporalClass : public ambs_base::AMBSBaseCalculator{
 public:
   CompFloatTemporalClass(ros::NodeHandle& nh, std::string& name):
     nh_(nh),
-    name_(name)
+    name_(name),
+    ambs_base::AMBSBaseCalculator (nh)
   {}
   ~CompFloatTemporalClass() {}
   void init (){
+    ROS_INFO_STREAM(name_ <<  " : Started init");
     is_started_ = is_stopped_ = is_reset_ = false;
     start_ = nh_.subscribe("start", 10, &CompFloatTemporalClass::startCB, this);
     stop_ = nh_.subscribe("stop", 10, &CompFloatTemporalClass::stopCB, this);
@@ -26,7 +30,8 @@ public:
     pub_result_ = nh_.advertise<std_msgs::Float64>("result",10);
     execute_ = nh_.createTimer(ros::Duration(1.0), boost::bind(& CompFloatTemporalClass::executeCB, this, _1));
     result_msg_.reset(new std_msgs::Float64());
-    ROS_INFO_STREAM("Finished init");
+    standard_control_.printPorts();
+    ROS_INFO_STREAM(name_ <<  " : Finished init");
   }
 
   void startCB(const std_msgs::Bool::ConstPtr& msg){
